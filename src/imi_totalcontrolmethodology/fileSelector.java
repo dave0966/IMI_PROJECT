@@ -20,9 +20,9 @@ public class fileSelector extends javax.swing.JFrame {
      */
     public fileSelector() {
         initComponents();	
+        this.setTitle("TOTAL CONTROL METHODOLOGY - File Selection");
         this.setLocationRelativeTo(null);
-        Image icon = new ImageIcon(this.getClass().getResource("LOGO.jpg")).getImage();
-        this.setIconImage(icon);
+        this.setIconImage(new ImageIcon(this.getClass().getResource("LOGO.jpg")).getImage());
         this.setResizable(false);
         this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.pack();
@@ -47,6 +47,7 @@ public class fileSelector extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imi_totalcontrolmethodology/image-300x150.jpg"))); // NOI18N
 
         jButton1.setText("...");
+        jButton1.setFocusable(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -107,8 +108,7 @@ public class fileSelector extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         JFileChooser chooser = new JFileChooser();
-        FileFilter filter = new FileNameExtensionFilter("Excel file", "xls", "xlsx");
-        chooser.setFileFilter(filter);
+        chooser.setFileFilter(new FileNameExtensionFilter("Excel file", "xls", "xlsx"));
         
         if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
         	File f = chooser.getSelectedFile();
@@ -130,11 +130,6 @@ public class fileSelector extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
