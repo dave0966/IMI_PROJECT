@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package imi_totalcontrolmethodology;
 
 import java.awt.Color;
@@ -19,11 +15,11 @@ public class fillupFrame extends javax.swing.JFrame {
      * Creates new form fillupFrame
      */
     public fillupFrame() {
-        initComponents();
-        this.setTitle("Valeo STLA");
-        this.getContentPane().setBackground(Color.white);
-        Image icon = new ImageIcon(this.getClass().getResource("LOGO.jpg")).getImage();
-        this.setIconImage(icon);
+    	initComponents();
+    }
+    
+    public fillupFrame(String fileDir) {
+    	initComponents();
     }
 
     /**
@@ -34,6 +30,13 @@ public class fillupFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+    	this.setTitle("Valeo STLA");
+    	this.getContentPane().setBackground(Color.white);
+    	Image icon = new ImageIcon(this.getClass().getResource("LOGO.jpg")).getImage();
+    	this.setIconImage(icon);
+    	this.setVisible(true);
+    	this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    	this.setFocusable(false);
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -101,8 +104,6 @@ public class fillupFrame extends javax.swing.JFrame {
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setFocusable(false);
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField1.setText("Ground strap");

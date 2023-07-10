@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package imi_totalcontrolmethodology;
 
 import static java.awt.Color.WHITE;
@@ -9,6 +5,7 @@ import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -22,11 +19,12 @@ public class fileSelector extends javax.swing.JFrame {
      * Creates new form fileSelector
      */
     public fileSelector() {
-        initComponents();
+        initComponents();	
         this.setLocationRelativeTo(null);
         Image icon = new ImageIcon(this.getClass().getResource("LOGO.jpg")).getImage();
         this.setIconImage(icon);
         this.setResizable(false);
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         this.pack();
         this.getContentPane().setBackground(WHITE);
         this.setVisible(true);
@@ -42,14 +40,11 @@ public class fileSelector extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imi_totalcontrolmethodology/image-300x150.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
 
         jButton1.setText("...");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -58,17 +53,20 @@ public class fileSelector extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Continue");
+        jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        
         jTextField1.setEditable(false);
         jTextField1.setText("Select File");
         jTextField1.setFocusable(false);
         jTextField1.setRequestFocusEnabled(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
-        jButton2.setText("Continue");
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,22 +105,27 @@ public class fileSelector extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         JFileChooser chooser = new JFileChooser();
         FileFilter filter = new FileNameExtensionFilter("Excel file", "xls", "xlsx");
-        chooser.showOpenDialog(null);
-        File f=chooser.getSelectedFile();
-        String fileName=f.getAbsolutePath();
-        chooser.addChoosableFileFilter(filter);
-        jTextField1.setText(fileName);
+        chooser.setFileFilter(filter);
+        
+        if(chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+        	File f = chooser.getSelectedFile();
+        	jTextField1.setText(f.getAbsolutePath());
+        	jButton2.setEnabled(true);
+        }
     
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    	if(new File(jTextField1.getText()).exists()) {
+    		new fillupFrame(jTextField1.getText());
+    		dispose();
+    	}
+    	else
+    		JOptionPane.showMessageDialog(null, "The file does not exist. Please check the selected file directory .", "File Selection Error", JOptionPane.WARNING_MESSAGE);
+    }
     /**
      * @param args the command line arguments
      */

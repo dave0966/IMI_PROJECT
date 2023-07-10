@@ -20,8 +20,7 @@ public class NewJFrame2 extends javax.swing.JFrame {
         this.setTitle("SELECT PRODUCT TYPE");
         this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.white);
-        
-        
+        this.setVisible(true);
     }
 
     /**
@@ -42,7 +41,7 @@ public class NewJFrame2 extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imi_totalcontrolmethodology/image-300x150.jpg"))); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Valeo IKS", "Valeo STLA Format1", "Valeo STLA Format2" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Valeo IKS", "Valeo STLA - Aview", "Valeo STLA - SASSY 3" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -106,11 +105,6 @@ public class NewJFrame2 extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
